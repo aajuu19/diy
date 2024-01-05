@@ -1,28 +1,24 @@
 import { StrapiBlogArticleData } from "@/types/strapi-types";
 import { useQuery } from "@tanstack/react-query";
 
-type BlogArticleProps = {
+type SimilarBlogArticleProps = {
   blogArticleSlug?: string;
   category?: string;
 };
 
-export const useBlogArticleQuery = ({
+export const useSimilarBlogArticlesQuery = ({
   category,
-  blogArticleSlug,
-}: BlogArticleProps) => {
+}: SimilarBlogArticleProps) => {
   const queryCategoryRoute = category
     ? `&filters[category][slug][$eq]=${category}`
     : "";
-
-  const filterBySlug = blogArticleSlug
-    ? `&filters[slug][$eq]=${blogArticleSlug}`
-    : "";
+  const maxArticles = 5;
 
   return useQuery<StrapiBlogArticleData>({
-    queryKey: ["blog-article"],
+    queryKey: ["similar-blog-article"],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blog-articles?populate[0]=materialList.linkList&populate[1]=materialList.linkList.articleImg&populate[2]=previewImage&populate[3]=stepSection.steps&populate[4]=stepSection.steps.media&populate[5]=stepSection.headline${queryCategoryRoute}${filterBySlug}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blog-articles?populate=*${queryCategoryRoute}&pagination[limit]=${maxArticles}`,
         {
           headers: {
             "Content-Type": "application/json",

@@ -65,6 +65,17 @@ export type StrapiBlogArticleData = {
       updatedAt: string;
       publishedAt: string;
       slug: string;
+      materialList: {
+        id: number;
+        title: string;
+        linkList: {
+          id: number;
+          label: string;
+          url: string;
+          articleImg: StrapiImage | null;
+        }[];
+      };
+      stepSection: StrapiStepSection;
       previewImage: {
         id: number;
         data: {
@@ -74,4 +85,25 @@ export type StrapiBlogArticleData = {
       category: { data: { attributes: StrapiCategory } };
     };
   }[];
+};
+
+export type StrapiStepType = {
+  id: number;
+  title: string;
+  description: BlocksContent;
+  media: StrapiImage | null;
+};
+
+type StrapiStepSection = {
+  id: number;
+  headline: StrapiHeadline;
+  steps: StrapiStepType[];
+  outroText: BlocksContent;
+};
+
+export type StrapiHeadline = {
+  id: number;
+  as: HeadlineTypes | "span";
+  variant: HeadlineTypes;
+  content: string;
 };

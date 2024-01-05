@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p {
+  @apply mb-4;
+}
+
+ul.tool-list {
+  @apply leading-10;
+  @apply list-inside;
+}
+
+ul.tool-list li {
+  display: flex;
+}
+
+ul.tool-list li:before {
+  content: url("/tool.svg");
+  position: relative;
+  top: 0.125rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+main section article a {
+  position: relative;
+}
+
+main section article a:hover {
+  text-decoration: none !important;
+}
+
+main section article a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: opacity 0.2s ease-in-out;
+  @apply -z-10;
+  @apply opacity-35;
+  @apply bottom-1/4;
+  @apply bg-primary;
+  @apply h-2;
+}
+
+main section article a:hover:after {
+  @apply opacity-80;
+}

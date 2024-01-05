@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/core/Providers";
 import clsx from "clsx";
 
-const openSans = Open_Sans({ subsets: ["latin"] });
+const merriWeather = Merriweather({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,8 +21,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={clsx(openSans.className, "text-neutral-content")}>
-        <Providers>{children}</Providers>
+      <body
+        className={clsx(
+          merriWeather.className,
+          "text-neutral-content leading-7"
+        )}
+      >
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
