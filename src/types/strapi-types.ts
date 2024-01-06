@@ -82,8 +82,28 @@ export type StrapiBlogArticleData = {
           attributes: StrapiImage;
         };
       };
+      tips: {
+        label: string;
+      }[];
       category: { data: { attributes: StrapiCategory } };
+      conclusion: BlocksContent;
+      youtubeSection: {
+        id: number;
+        headline: StrapiHeadline;
+        embedId: string;
+        source: string;
+      };
+      faqSection: StrapiFaqSection;
     };
+  }[];
+};
+
+export type StrapiFaqSection = {
+  headline: StrapiHeadline;
+  faqItems: {
+    id: number;
+    question: string;
+    answer: string;
   }[];
 };
 
@@ -91,7 +111,11 @@ export type StrapiStepType = {
   id: number;
   title: string;
   description: BlocksContent;
-  media: StrapiImage | null;
+  media: {
+    data: {
+      attributes: StrapiImage | null;
+    };
+  };
 };
 
 type StrapiStepSection = {

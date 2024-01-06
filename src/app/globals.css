@@ -6,17 +6,19 @@ p {
   @apply mb-4;
 }
 
-ul.tool-list {
+ul.tool-list,
+ul.tip-list {
   @apply leading-10;
   @apply list-inside;
 }
 
-ul.tool-list li {
+ul.tool-list li,
+ul.tip-list li {
   display: flex;
 }
 
-ul.tool-list li:before {
-  content: url("/tool.svg");
+ul.tool-list li:before,
+ul.tip-list li:before {
   position: relative;
   top: 0.125rem;
   display: block;
@@ -25,12 +27,18 @@ ul.tool-list li:before {
   margin-right: 0.5rem;
 }
 
-main section article a {
-  position: relative;
+ul.tool-list li:before {
+  content: url("/tool.svg");
 }
 
-main section article a:hover {
-  text-decoration: none !important;
+ul.tip-list li:before {
+  content: url("/tip.svg");
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+main section article a {
+  position: relative;
 }
 
 main section article a:after {
@@ -47,5 +55,5 @@ main section article a:after {
 }
 
 main section article a:hover:after {
-  @apply opacity-80;
+  @apply opacity-60;
 }

@@ -21,12 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body
-        className={clsx(
-          merriWeather.className,
-          "text-neutral-content leading-7"
-        )}
-      >
+      <body className={clsx(merriWeather.className, "text-neutral leading-7")}>
         <Providers>
           <main>{children}</main>
         </Providers>

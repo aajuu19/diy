@@ -1,8 +1,7 @@
 "use client";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { useBlogArticleQuery } from "@/data/useBlogArticleQuery";
 import Image from "next/image";
-import { Container, Headline } from "@/components/common";
+import { Container, Headline, Text } from "@/components/common";
 import { formatUtils } from "@/utils/formatter";
 import { AuthorIcon } from "@/components/icons";
 import { useSimilarBlogArticlesQuery } from "@/data/useSimilarBlogArticlesQuery";
@@ -11,12 +10,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialShareButtons } from "@/components/common/SocialShareButtons";
 import { StepSection } from "@/components/sections/StepSection";
+import { YoutubeSection } from "@/components/sections";
+import { FaqSection } from "@/components/sections/FaqSection";
 
 export default function Page({
   params,
 }: Readonly<{ params: { slug: string; blogSlug: string } }>) {
   const { data } = useBlogArticleQuery({ blogArticleSlug: params.blogSlug });
   const { data: rawSimilarBlogData } = useSimilarBlogArticlesQuery({
+    blogArticleSlug: params.blogSlug,
     category: params.slug,
   });
 
@@ -60,7 +62,7 @@ export default function Page({
           <div className="pt-6 grid grid-cols-12 gap-12">
             <article className="col-span-8">
               <SocialShareButtons className="border-b border-border pb-4 mb-4" />
-              <BlocksRenderer content={articleData?.introductionText} />
+              <Text content={articleData?.introductionText} />
               {materialListData && (
                 <div className="border-b border-border pb-4 mb-4 mt-10">
                   <span className="font-bold text-xl bg-primary text-primary-content p-2 block mb-4">
@@ -70,14 +72,14 @@ export default function Page({
                     <ul className="tool-list">
                       {materialListData?.linkList?.map(({ label, url }) => (
                         <li key={url + label}>
-                          <a
+                          <Link
                             href={url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:underline"
+                            title="Der Artikel wird in einem neuen Tab geöffnet"
                           >
                             {label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -89,8 +91,51 @@ export default function Page({
                   headline={articleData.stepSection.headline}
                   steps={articleData.stepSection.steps}
                   outroText={articleData.stepSection.outroText}
-                  className="mt-10"
+                  className="mt-10 border-b border-border pb-4 mb-10"
                 />
+              )}
+
+              {articleData?.tips && (
+                <div className="border-b border-border pb-4 mb-10">
+                  <Headline
+                    variant="h4"
+                    as="span"
+                    className="mb-4 bg-primary text-primary-content p-2"
+                  >
+                    Tipps & Tricks:
+                  </Headline>
+                  <ul className="tip-list">
+                    {articleData?.tips?.map(({ label }, index) => (
+                      <li key={index}>{label}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {articleData?.youtubeSection && (
+                <YoutubeSection
+                  embedId={articleData?.youtubeSection?.embedId}
+                  headline={articleData?.youtubeSection?.headline}
+                  source={articleData?.youtubeSection?.source}
+                  className="mb-10 border-b border-border pb-4"
+                />
+              )}
+
+              {articleData?.faqSection && (
+                <FaqSection
+                  faqItems={articleData?.faqSection?.faqItems}
+                  headline={articleData?.faqSection?.headline}
+                  className="mb-10 border-b border-border pb-4"
+                />
+              )}
+
+              {articleData?.conclusion && (
+                <>
+                  <Headline as="h4" variant="h4" className="mb-4">
+                    Fazit:
+                  </Headline>
+                  <Text content={articleData?.conclusion} />
+                </>
               )}
             </article>
             <aside className="col-span-4">
@@ -116,7 +161,8 @@ export default function Page({
                       </div>
                       <Link
                         href={`/${firstPath}/${params.slug}/${slug}`}
-                        className="w-[200%] timeline-end border-b border-border pb-6"
+                        className="w-[200%] timeline-end border-b border-border pb-6 text-neutral transition-colors hover:text-opacity-80"
+                        title={`Klicken um zu - ${title} - zu wechseln`}
                       >
                         <time
                           className={clsx(

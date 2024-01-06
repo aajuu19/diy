@@ -9,7 +9,19 @@ const config: Config = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["pastel"],
+    themes: [
+      {
+        mytheme: {
+          primary: "#d8bf95",
+          "primary-content": "#ffffff",
+          secondary: "#E6E2DD",
+          accent: "#373A36",
+          neutral: "#383838",
+          "base-100": "#ffffff",
+        },
+      },
+      "light",
+    ],
   },
 };
 export default config;
