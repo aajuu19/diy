@@ -3,6 +3,7 @@ import { Merriweather } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/core/Providers";
 import clsx from "clsx";
+import { Footer, Navigation } from "@/components/core";
 
 const merriWeather = Merriweather({
   subsets: ["latin"],
@@ -23,7 +24,9 @@ export default function RootLayout({
     <html lang="de">
       <body className={clsx(merriWeather.className, "text-neutral leading-7")}>
         <Providers>
-          <main>{children}</main>
+          <Navigation />
+          <main className="mt-20 pt-8">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

@@ -44,7 +44,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${step?.media?.data?.attributes?.url}`}
                     fill
-                    alt={step?.media?.data?.attributes?.alternativeText}
+                    alt={step?.media?.data?.attributes?.alternativeText ?? ""}
                     className="object-contain"
                   />
                 </div>

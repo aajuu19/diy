@@ -28,8 +28,6 @@ export default function Page({
   const articleData = data?.data?.[0]?.attributes;
   const imageData = articleData?.previewImage?.data?.attributes;
 
-  console.log(articleData);
-
   const materialListData = articleData?.materialList;
   const similarBlogData = rawSimilarBlogData?.data;
 
@@ -53,15 +51,30 @@ export default function Page({
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${imageData?.url}`}
               fill
-              alt={imageData?.alternativeText}
+              alt={imageData?.alternativeText ?? ""}
               className="object-cover object-center"
             />
           </div>
         )}
         {articleData?.introductionText && (
-          <div className="pt-6 grid grid-cols-12 gap-12">
+          <div className="pt-6 grid grid-cols-12 gap-x-12 gap-y-6">
+            <div className="flex justify-between col-span-12 border-b border-border items-center">
+              <div className="*:text-sm breadcrumbs">
+                <ul>
+                  <li>
+                    <Link href="/kategorien">Kategorien</Link>
+                  </li>
+                  <li>
+                    <Link href={`/kategorien/${params.slug}`}>
+                      {articleData?.category?.data?.attributes?.name}
+                    </Link>
+                  </li>
+                  <li>{articleData?.title}</li>
+                </ul>
+              </div>
+              <SocialShareButtons />
+            </div>
             <article className="col-span-8">
-              <SocialShareButtons className="border-b border-border pb-4 mb-4" />
               <Text content={articleData?.introductionText} />
               {materialListData && (
                 <div className="border-b border-border pb-4 mb-4 mt-10">
@@ -95,7 +108,7 @@ export default function Page({
                 />
               )}
 
-              {articleData?.tips && (
+              {articleData?.tips && !!articleData?.tips?.length && (
                 <div className="border-b border-border pb-4 mb-10">
                   <Headline
                     variant="h4"
@@ -131,9 +144,6 @@ export default function Page({
 
               {articleData?.conclusion && (
                 <>
-                  <Headline as="h4" variant="h4" className="mb-4">
-                    Fazit:
-                  </Headline>
                   <Text content={articleData?.conclusion} />
                 </>
               )}

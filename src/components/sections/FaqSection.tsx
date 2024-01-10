@@ -14,7 +14,6 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   faqItems,
   className,
 }) => {
-  console.log("rerender");
   return (
     <section id="faq-section" className={className}>
       <Headline as={headline.as} variant={headline.variant} className="mb-4">

@@ -6,6 +6,11 @@ p {
   @apply mb-4;
 }
 
+ul.nav-links li a:hover {
+  @apply border-b;
+  @apply border-primary;
+}
+
 ul.tool-list,
 ul.tip-list {
   @apply leading-10;

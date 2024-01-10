@@ -13,7 +13,6 @@ export const useSimilarBlogArticlesQuery = ({
   const queryCategoryRoute = category
     ? `&filters[category][slug][$eq]=${category}`
     : "";
-  console.log("blogArticleSlug", blogArticleSlug);
   const filterOutSlug = `&filters[slug][$ne]=${blogArticleSlug}`;
   const maxArticles = 5;
 
