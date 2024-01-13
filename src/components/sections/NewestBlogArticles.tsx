@@ -16,7 +16,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
 
   return (
     <section className="mt-10">
-      <Container className="border-b border-border pb-6 grid grid-cols-12 grid-rows-4 gap-6">
+      <Container className="border-b border-border pb-6 grid grid-cols-12 grid-rows-4 gap-x-6">
         {blogArticles &&
           !!blogArticles.length &&
           blogArticles?.map(
@@ -71,7 +71,12 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                 <Link
                   href={`/kategorien/${category.data.attributes.slug}/${slug}`}
                   key={id}
-                  className="col-span-6 row-span-1 grid grid-cols-3"
+                  className={clsx(
+                    "col-span-6 row-span-1 grid grid-cols-3 group",
+                    index !== blogArticles.length - 1 &&
+                      "border-b border-border pb-4",
+                    index !== 1 && "pb-4 pt-4"
+                  )}
                 >
                   <figure className="relative h-full flex-1 col-span-1">
                     <Image
@@ -87,7 +92,11 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                     <span className="text-sm text-gray-600">
                       {formatUtils.formatDate(publishedAt)}
                     </span>
-                    <Headline as="span" variant="h5">
+                    <Headline
+                      as="span"
+                      variant="h5"
+                      className="transition-colors group-hover:text-primary"
+                    >
                       {title}
                     </Headline>
                     <div className="line-clamp-3">
