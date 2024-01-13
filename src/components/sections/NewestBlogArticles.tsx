@@ -37,15 +37,19 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
             ) => {
               if (index === 0)
                 return (
-                  <div key={id} className="row-span-4 col-span-6 relative">
-                    <figure className="relative w-full h-full z-0">
+                  <Link
+                    href={`/kategorien/${category.data.attributes.slug}/${slug}`}
+                    key={id}
+                    className="row-span-4 col-span-6 relative group"
+                  >
+                    <figure className="relative w-full h-full z-0 overflow-hidden ">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                         alt={
                           previewImage?.data?.attributes?.alternativeText ?? ""
                         }
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                       <div className="bg-gradient-to-t from-black absolute inset-0 z-0" />
                     </figure>
@@ -64,7 +68,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
 
               return (
@@ -78,14 +82,14 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                     index !== 1 && "pb-4 pt-4"
                   )}
                 >
-                  <figure className="relative h-full flex-1 col-span-1">
+                  <figure className="relative h-full flex-1 col-span-1 overflow-hidden">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                       alt={
                         previewImage?.data?.attributes?.alternativeText ?? ""
                       }
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </figure>
                   <div className="pl-4 col-span-2">
