@@ -78,7 +78,7 @@ export default function Page({
               <Text content={articleData?.introductionText} />
               {materialListData && (
                 <div className="border-b border-border pb-4 mb-4 mt-10">
-                  <span className="font-bold text-xl bg-primary text-primary-content p-2 block mb-4">
+                  <span className="font-bold text-xl bg-secondary text-primary-content p-2 block mb-4">
                     {materialListData?.title}
                   </span>
                   {materialListData?.linkList && (
@@ -113,7 +113,7 @@ export default function Page({
                   <Headline
                     variant="h4"
                     as="span"
-                    className="mb-4 bg-primary text-primary-content p-2"
+                    className="mb-4 bg-secondary text-primary-content p-2"
                   >
                     Tipps & Tricks:
                   </Headline>
@@ -149,7 +149,7 @@ export default function Page({
               )}
             </article>
             <aside className="col-span-4">
-              <span className="font-bold text-xl bg-primary text-primary-content p-2 block mb-4">
+              <span className="font-bold text-xl bg-secondary text-primary-content p-2 block mb-4">
                 Ähnliche Artikel
               </span>
               <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical -translate-x-1/2">
@@ -167,7 +167,7 @@ export default function Page({
                   ) => (
                     <li key={slug}>
                       <div className="timeline-middle">
-                        <div className="w-3 h-3 mt-1 rounded-full bg-primary" />
+                        <div className="w-3 h-3 mt-1 rounded-full bg-secondary" />
                       </div>
                       <Link
                         href={`/${firstPath}/${params.slug}/${slug}`}

@@ -26,7 +26,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
             name="my-accordion-1"
             defaultChecked={index === 0}
           />
-          <span className="collapse-title text-xl font-medium bg-primary text-primary-content">
+          <span className="collapse-title text-xl font-medium bg-secondary text-primary-content">
             {question}
           </span>
           <div className="collapse-content pt-4">

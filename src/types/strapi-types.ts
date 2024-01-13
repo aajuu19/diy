@@ -85,6 +85,9 @@ export type StrapiBlogArticleData = {
       tips: {
         label: string;
       }[];
+      tagList: {
+        label: string;
+      }[];
       category: { data: { attributes: StrapiCategory } };
       conclusion: BlocksContent;
       youtubeSection: {

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.image-full {
+  @apply rounded-none;
+}
+
+.image-full:before {
+  @apply rounded-none !important;
+  @apply bg-transparent !important;
+  background-image: linear-gradient(to top, black, transparent);
+}
+
 p {
   @apply mb-4;
 }

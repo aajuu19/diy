@@ -31,7 +31,7 @@ export function Headline(props: HeadlineProps) {
 
   return (
     <CustomComponent
-      className={clsx("font-bold block", headlineClass, className)}
+      className={clsx("font-bold block mb-4", headlineClass, className)}
     >
       {children}
     </CustomComponent>

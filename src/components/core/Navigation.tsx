@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Container } from "../common";
 import { SearchIcon } from "../icons";
 import { useSearchBlogArticlesQuery } from "@/data/useSearchBlogArticlesQuery";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
+import { Logo } from "../icons/Logo";
 
 type NavigationProps = {};
 
@@ -21,7 +22,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
     <nav className="border-b border-border h-20 flex justify-center items-center fixed w-full top-0 z-10 bg-white">
       <Container className="flex justify-between items-center w-full">
         <Link href="/">
-          <img src="/placeholder-logo.png" className="w-40" alt="ha" />
+          <Logo className="w-64" />
         </Link>
         <ul className="flex gap-4 nav-links">
           <li>
@@ -57,6 +58,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
             )}
           >
             {blogArticles &&
+              !!blogArticles?.length &&
               blogArticles.map((article) => (
                 <li key={article?.attributes?.title}>
                   {article.attributes.title}
