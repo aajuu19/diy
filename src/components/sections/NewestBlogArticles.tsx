@@ -15,8 +15,8 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
   const blogArticles = data?.data;
 
   return (
-    <section className="mt-10">
-      <Container className="border-b border-border pb-6 grid grid-cols-12 grid-rows-4 gap-x-6">
+    <section className="mt-14">
+      <Container className="border-b border-border pb-14 grid grid-cols-12 grid-rows-4 gap-x-6">
         {blogArticles &&
           !!blogArticles.length &&
           blogArticles?.map(
@@ -42,14 +42,14 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                     key={id}
                     className="row-span-4 col-span-6 relative group"
                   >
-                    <figure className="relative w-full h-full z-0 overflow-hidden ">
+                    <figure className="relative w-full h-full z-0 overflow-hidden">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                         alt={
                           previewImage?.data?.attributes?.alternativeText ?? ""
                         }
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="bg-gradient-to-t from-black absolute inset-0 z-0" />
                     </figure>
@@ -89,7 +89,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                         previewImage?.data?.attributes?.alternativeText ?? ""
                       }
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </figure>
                   <div className="pl-4 col-span-2">

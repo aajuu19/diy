@@ -33,7 +33,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
             <div
               className={clsx(
                 "col-span-10 pl-2",
-                index !== steps.length - 1 && "border-b border-border"
+                index !== steps.length - 1 && "border-b border-border py-4"
               )}
             >
               <Headline as="span" variant="h4">

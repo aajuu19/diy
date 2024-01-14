@@ -12,7 +12,13 @@
   background-image: linear-gradient(to top, black, transparent);
 }
 
-p {
+.tab.tab-active:not(.tab-disabled):not([disabled]),
+.tab:is(input:checked) {
+  @apply border-primary;
+  @apply text-primary;
+}
+
+p:not(:last-child) {
   @apply mb-4;
 }
 
@@ -63,12 +69,12 @@ main section article a:after {
   right: 0;
   transition: opacity 0.2s ease-in-out;
   @apply -z-10;
-  @apply opacity-35;
+  @apply opacity-15;
   @apply bottom-1/4;
   @apply bg-primary;
   @apply h-2;
 }
 
 main section article a:hover:after {
-  @apply opacity-60;
+  @apply opacity-40;
 }

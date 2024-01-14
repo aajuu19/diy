@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export default function Page({
   params,
 }: Readonly<{ params: { slug: string } }>) {
-  const { data } = useBlogArticleQuery({ category: params.slug });
+  const { data } = useBlogArticleQuery({ category: params.slug, limit: 10 });
   const pathName = usePathname();
 
   const blogArticles = data?.data;

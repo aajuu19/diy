@@ -19,7 +19,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
   console.log(!!blogArticles?.length);
 
   return (
-    <nav className="border-b border-border h-20 flex justify-center items-center fixed w-full top-0 z-10 bg-white">
+    <nav className="border-b border-border h-20 flex justify-center items-center fixed w-full top-0 bg-white z-50">
       <Container className="flex justify-between items-center w-full">
         <Link href="/">
           <Logo className="w-64" />
@@ -59,10 +59,8 @@ export const Navigation: React.FC<NavigationProps> = () => {
           >
             {blogArticles &&
               !!blogArticles?.length &&
-              blogArticles.map((article) => (
-                <li key={article?.attributes?.title}>
-                  {article.attributes.title}
-                </li>
+              blogArticles.map(({ attributes: { title } }) => (
+                <li key={title}>{title}</li>
               ))}
           </ul>
         </div>

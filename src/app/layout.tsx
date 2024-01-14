@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={clsx(merriWeather.className, "text-neutral leading-7")}>
         <Providers>
           <Navigation />
-          <main className="mt-20 pt-8">{children}</main>
+          <main className="mt-20 py-14">{children}</main>
           <Footer />
         </Providers>
       </body>
