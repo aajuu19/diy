@@ -79,7 +79,7 @@ export const TabSection: React.FC<TabSectionProps> = () => {
                       alt={
                         previewImage?.data?.attributes?.alternativeText ?? ""
                       }
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                     />
                   </div>
                   <Headline as="span" variant="h4" className="mt-4">

@@ -20,13 +20,13 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
         {headline.content}
       </Headline>
       {faqItems.map(({ id, question, answer }, index) => (
-        <div key={id} className="collapse collapse-plus rounded-none">
+        <div key={id} className="collapse collapse-plus rounded-lg">
           <input
             type="radio"
             name="my-accordion-1"
             defaultChecked={index === 0}
           />
-          <span className="collapse-title text-xl font-medium bg-secondary text-primary-content">
+          <span className="collapse-title text-xl font-medium bg-secondary text-primary-content rounded-lg">
             {question}
           </span>
           <div className="collapse-content pt-4">

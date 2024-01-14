@@ -24,7 +24,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
       </Headline>
       {steps?.map((step, index) => {
         return (
-          <div key={step.id} className="grid grid-cols-12 gap-4 pt-4">
+          <div key={step.id} className="grid grid-cols-12 gap-4 pb-8">
             <div className="col-span-1">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-content text-lg">
                 {index + 1}
@@ -33,7 +33,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
             <div
               className={clsx(
                 "col-span-10 pl-2",
-                index !== steps.length - 1 && "border-b border-border py-4"
+                index !== steps.length - 1 && "border-b border-border pb-4"
               )}
             >
               <Headline as="span" variant="h4">

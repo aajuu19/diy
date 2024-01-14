@@ -42,7 +42,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                     key={id}
                     className="row-span-4 col-span-6 relative group"
                   >
-                    <figure className="relative w-full h-full z-0 overflow-hidden">
+                    <figure className="relative w-full h-full z-0 overflow-hidden rounded-lg">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                         alt={
@@ -89,7 +89,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                         previewImage?.data?.attributes?.alternativeText ?? ""
                       }
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                     />
                   </figure>
                   <div className="pl-4 col-span-2">

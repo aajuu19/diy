@@ -51,7 +51,7 @@ export default function Home() {
                   src="/landing/diy-content.jpg"
                   fill
                   alt="Farbenfrohes Bild mit einigen DIY Utensilien"
-                  className="object-cover h-full w-full"
+                  className="object-cover h-full w-full rounded-lg"
                 />
               </div>
               <div className="col-span-8 col-start-7 py-12 flex flex-col gap-6">

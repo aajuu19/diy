@@ -53,6 +53,12 @@ export type StrapiCategory = {
   pageTitle: string;
   metaDescription: string;
   slug: string;
+  previewImage: {
+    id: number;
+    data: {
+      attributes: StrapiImage;
+    };
+  };
 };
 
 export type StrapiBlogArticleData = {
