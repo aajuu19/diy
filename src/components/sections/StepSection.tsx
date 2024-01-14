@@ -40,7 +40,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
                 {step.title}
               </Headline>
               {step.media?.data && (
-                <div className="w-full h-60 relative border border-border my-4">
+                <div className="w-full h-60 relative border border-border my-4 rounded-lg">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${step?.media?.data?.attributes?.url}`}
                     fill

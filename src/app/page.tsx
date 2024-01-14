@@ -1,4 +1,4 @@
-import { Container, Headline, Text } from "@/components/common";
+import { Container, Headline } from "@/components/common";
 import { NewestBlogArticles } from "@/components/sections/NewestBlogArticles";
 import { TabSection } from "@/components/sections/TabSection";
 import Image from "next/image";
@@ -43,10 +43,10 @@ export default function Home() {
       </section>
 
       <section className="mt-14">
-        <div className="hero">
-          <Container className="pb-14">
-            <div className="hero-content flex-col lg:flex-row p-0 grid grid-cols-12">
-              <div className="relative col-span-5 h-full">
+        <Container className="pb-14">
+          <div className="hero">
+            <div className="hero-content p-0 grid grid-cols-12">
+              <div className="relative col-span-12 md:col-span-5 md:h-full h-64">
                 <Image
                   src="/landing/diy-content.jpg"
                   fill
@@ -54,7 +54,7 @@ export default function Home() {
                   className="object-cover h-full w-full rounded-lg"
                 />
               </div>
-              <div className="col-span-8 col-start-7 py-12 flex flex-col gap-6">
+              <div className="col-span-12 md:col-span-8 md:col-start-7 py-12 flex flex-col gap-6">
                 <Headline as="h3" variant="h3">
                   Selbstgestaltung leicht gemacht: Ihre DIY-Projektzentrale
                 </Headline>
@@ -71,8 +71,8 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </Container>
-        </div>
+          </div>
+        </Container>
       </section>
     </>
   );

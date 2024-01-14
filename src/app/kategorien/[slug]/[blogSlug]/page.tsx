@@ -47,7 +47,7 @@ export default function Page({
           </div>
         )}
         {imageData && (
-          <div className="w-full relative h-96">
+          <div className="w-full relative h-96 rounded-lg overflow-hidden">
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${imageData?.url}`}
               fill
@@ -57,7 +57,7 @@ export default function Page({
           </div>
         )}
         {articleData?.introductionText && (
-          <div className="pt-6 grid grid-cols-12 gap-x-12 gap-y-6">
+          <div className="pt-6 grid grid-cols-12 md:gap-x-12 gap-y-6">
             <div className="flex justify-between col-span-12 border-b border-border items-center">
               <div className="*:text-sm breadcrumbs">
                 <ul>
@@ -74,7 +74,7 @@ export default function Page({
               </div>
               <SocialShareButtons />
             </div>
-            <article className="col-span-8">
+            <article className="col-span-12 md:col-span-8">
               <Text content={articleData?.introductionText} />
               {materialListData && (
                 <div className="border-b border-border pb-4 mb-4 mt-10">
@@ -148,11 +148,11 @@ export default function Page({
                 </>
               )}
             </article>
-            <aside className="col-span-4">
+            <aside className="col-span-12 md:col-span-4">
               <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4  block mb-4 rounded-lg">
                 Ähnliche Artikel
               </span>
-              <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical -translate-x-1/2">
+              <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical md:-translate-x-1/2">
                 {similarBlogData?.map(
                   (
                     {
@@ -171,7 +171,7 @@ export default function Page({
                       </div>
                       <Link
                         href={`/${firstPath}/${params.slug}/${slug}`}
-                        className="w-[200%] timeline-end border-b border-border pb-6 text-neutral transition-colors hover:text-opacity-80"
+                        className="md:w-[200%] timeline-end border-b border-border pb-6 text-neutral transition-colors hover:text-opacity-80"
                         title={`Klicken um zu - ${title} - zu wechseln`}
                       >
                         <time

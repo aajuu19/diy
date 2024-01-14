@@ -59,22 +59,11 @@ ul.tip-list li:before {
 }
 
 main section article a {
-  position: relative;
+  @apply underline;
+  @apply underline-offset-4;
+  @apply decoration-primary;
 }
 
-main section article a:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  transition: opacity 0.2s ease-in-out;
-  @apply -z-10;
-  @apply opacity-15;
-  @apply bottom-1/4;
-  @apply bg-primary;
-  @apply h-2;
-}
-
-main section article a:hover:after {
-  @apply opacity-40;
+main section article a:hover {
+  @apply text-primary;
 }

@@ -82,7 +82,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
                     )}
                   >
                     <div>
-                      <figure className="w-40 h-24 overflow-hidden relative block">
+                      <figure className="w-40 h-24 overflow-hidden relative block rounded-lg">
                         <Image
                           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                           alt={previewImage?.data?.attributes?.alternativeText}

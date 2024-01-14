@@ -23,7 +23,7 @@ export const useBlogArticleQuery = ({
   const articleLimit = limit ? `&pagination[limit]=${limit}` : "";
 
   return useQuery<StrapiBlogArticleData>({
-    queryKey: ["blog-article", category],
+    queryKey: ["blog-article", category, limit],
     queryFn: async () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blog-articles?populate=deep,5${queryCategoryRoute}${filterBySlug}${articleLimit}`,

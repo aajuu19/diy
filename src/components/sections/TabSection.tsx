@@ -31,7 +31,7 @@ export const TabSection: React.FC<TabSectionProps> = () => {
   return (
     <Container className="mt-14 border-border border-b pb-14">
       <Headline as="span" variant="h2">
-        Interessante Kategorien
+        Unsere letzten Beiträge
       </Headline>
       <section>
         <div className="flex">
@@ -51,7 +51,7 @@ export const TabSection: React.FC<TabSectionProps> = () => {
               </div>
             ))}
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           {blogArticles &&
             !!blogArticles.length &&
             blogArticles.map(

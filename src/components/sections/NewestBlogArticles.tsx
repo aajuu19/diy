@@ -16,7 +16,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
 
   return (
     <section className="mt-14">
-      <Container className="border-b border-border pb-14 grid grid-cols-12 grid-rows-4 gap-x-6">
+      <Container className="border-b border-border pb-14 grid grid-cols-12 md:grid-rows-4 gap-x-6 gap-y-6 md:gap-y-0">
         {blogArticles &&
           !!blogArticles.length &&
           blogArticles?.map(
@@ -40,9 +40,9 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                   <Link
                     href={`/kategorien/${category.data.attributes.slug}/${slug}`}
                     key={id}
-                    className="row-span-4 col-span-6 relative group"
+                    className="md:row-span-4 col-span-12 md:col-span-6 relative group"
                   >
-                    <figure className="relative w-full h-full z-0 overflow-hidden rounded-lg">
+                    <figure className="relative w-full h-72 md:h-full z-0 overflow-hidden rounded-lg">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                         alt={
@@ -76,13 +76,13 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                   href={`/kategorien/${category.data.attributes.slug}/${slug}`}
                   key={id}
                   className={clsx(
-                    "col-span-6 row-span-1 grid grid-cols-3 group",
+                    "col-span-12 md:col-span-6 md:row-span-1 grid grid-cols-3 group",
                     index !== blogArticles.length - 1 &&
                       "border-b border-border pb-4",
                     index !== 1 && "pb-4 pt-4"
                   )}
                 >
-                  <figure className="relative h-full flex-1 col-span-1 overflow-hidden">
+                  <figure className="relative h-full flex-1 col-span-3 md:col-span-1 overflow-hidden min-h-32 rounded-lg">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${previewImage?.data?.attributes?.url}`}
                       alt={
@@ -92,7 +92,7 @@ export const NewestBlogArticles: React.FC<NewestBlogArticlesProps> = () => {
                       className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                     />
                   </figure>
-                  <div className="pl-4 col-span-2">
+                  <div className="pl-4 col-span-3 md:col-span-2">
                     <span className="text-sm text-gray-600">
                       {formatUtils.formatDate(publishedAt)}
                     </span>
