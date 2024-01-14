@@ -58,9 +58,9 @@ export default function Page({
         )}
         {articleData?.introductionText && (
           <div className="pt-6 grid grid-cols-12 md:gap-x-12 gap-y-6">
-            <div className="flex justify-between col-span-12 border-b border-border items-center">
+            <div className="md:flex pb-4 md:pb-0 justify-between col-span-12 border-b border-border items-center">
               <div className="*:text-sm breadcrumbs">
-                <ul>
+                <ul className="flex-wrap whitespace-break-spaces md:flex-nowrap md:whitespace-normal">
                   <li>
                     <Link href="/kategorien">Kategorien</Link>
                   </li>

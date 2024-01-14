@@ -25,14 +25,14 @@ export const StepSection: React.FC<StepSectionProps> = ({
       {steps?.map((step, index) => {
         return (
           <div key={step.id} className="grid grid-cols-12 gap-4 pb-8">
-            <div className="col-span-1">
+            <div className="col-span-12 md:col-span-1">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-content text-lg">
                 {index + 1}
               </div>
             </div>
             <div
               className={clsx(
-                "col-span-10 pl-2",
+                "col-span-12 md:col-span-10 pl-2",
                 index !== steps.length - 1 && "border-b border-border pb-4"
               )}
             >
