@@ -140,3 +140,20 @@ export type StrapiHeadline = {
   variant: HeadlineTypes;
   content: string;
 };
+
+export type StrapiComments = {
+  data: {
+    id: number;
+    attributes: {
+      author: string;
+      text: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+      blogArticle: {
+        id: number;
+        slug: string;
+      };
+    };
+  }[];
+};

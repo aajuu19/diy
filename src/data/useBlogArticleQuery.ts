@@ -26,7 +26,7 @@ export const useBlogArticleQuery = ({
     queryKey: ["blog-article", category, limit],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blog-articles?populate=deep,5${queryCategoryRoute}${filterBySlug}${articleLimit}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blog-articles?populate=deep,5${queryCategoryRoute}${filterBySlug}${articleLimit}&sort=createdAt:desc`,
         {
           headers: {
             "Content-Type": "application/json",

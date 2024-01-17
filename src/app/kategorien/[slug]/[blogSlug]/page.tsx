@@ -12,6 +12,8 @@ import { SocialShareButtons } from "@/components/common/SocialShareButtons";
 import { StepSection } from "@/components/sections/StepSection";
 import { YoutubeSection } from "@/components/sections";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { useGetCommentsQuery } from "@/data/useGetComments";
+import { CommentForm } from "@/components/sections/CommentSection";
 
 export default function Page({
   params,
@@ -20,6 +22,9 @@ export default function Page({
   const { data: rawSimilarBlogData } = useSimilarBlogArticlesQuery({
     blogArticleSlug: params.blogSlug,
     category: params.slug,
+  });
+  const { data: comments } = useGetCommentsQuery({
+    blogId: data?.data?.[0]?.id,
   });
 
   const pathname = usePathname();
@@ -37,6 +42,7 @@ export default function Page({
         <Headline variant="h1" as="h1" className="pb-4">
           {articleData?.title}
         </Headline>
+
         {articleData?.publishedAt && (
           <div className="flex gap-2">
             <AuthorIcon className="w-6 h-6" />
@@ -46,6 +52,7 @@ export default function Page({
             </span>
           </div>
         )}
+
         {imageData && (
           <div className="w-full relative h-96 rounded-lg overflow-hidden">
             <Image
@@ -56,6 +63,7 @@ export default function Page({
             />
           </div>
         )}
+
         {articleData?.introductionText && (
           <div className="pt-6 grid grid-cols-12 md:gap-x-12 gap-y-6">
             <div className="md:flex pb-4 md:pb-0 justify-between col-span-12 border-b border-border items-center">
@@ -76,11 +84,13 @@ export default function Page({
             </div>
             <article className="col-span-12 md:col-span-8">
               <Text content={articleData?.introductionText} />
+
               {materialListData && (
                 <div className="border-b border-border pb-4 mb-4 mt-10">
                   <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4 block mb-4 rounded-lg">
                     {materialListData?.title}
                   </span>
+
                   {materialListData?.linkList && (
                     <ul className="tool-list">
                       {materialListData?.linkList?.map(({ label, url }) => (
@@ -99,6 +109,7 @@ export default function Page({
                   )}
                 </div>
               )}
+
               {articleData?.stepSection && (
                 <StepSection
                   headline={articleData.stepSection.headline}
@@ -143,9 +154,43 @@ export default function Page({
               )}
 
               {articleData?.conclusion && (
-                <>
-                  <Text content={articleData?.conclusion} />
-                </>
+                <Text content={articleData?.conclusion} />
+              )}
+
+              {data?.data[0].id && <CommentForm blogId={data?.data[0].id} />}
+
+              {comments && !!comments.data.length ? (
+                <div className="border-t border-border mt-14 pt-14 flex flex-col gap-6">
+                  {comments?.data?.map(
+                    ({ attributes: { author, text, publishedAt } }) => (
+                      <div
+                        key={author + text}
+                        className="border-border border rounded-xl p-4 flex gap-4"
+                      >
+                        <div>
+                          <div className="bg-secondary w-14 h-14 text-primary-content font-bold flex items-center justify-center rounded-full">
+                            {author.charAt(0)}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-4">
+                            <Headline as="span" variant="h5" className="mb-0">
+                              {author}
+                            </Headline>
+                            <span className="w-2 h-2 bg-secondary rounded-full" />
+                            <span>{formatUtils.formatDate(publishedAt)}</span>
+                          </div>
+                          <p>{text}</p>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              ) : (
+                <span className="mt-14 pt-14 border-t border-border block">
+                  Es sind noch keine Kommentare vorhanden. Möchtest Du den
+                  Ersten schreiben?
+                </span>
               )}
             </article>
             <aside className="col-span-12 md:col-span-4">

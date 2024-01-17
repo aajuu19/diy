@@ -141,10 +141,20 @@ export const Navigation: React.FC<NavigationProps> = () => {
                   <Link href="/kategorien">Kategorien</Link>
                 </li>
                 <li>
-                  <Link href="#">Letzter Beitrag</Link>
+                  <Link
+                    href="/kategorien/wohnen"
+                    className="border-b border-white"
+                  >
+                    Wohnen
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/kategorien/wohnen">Wohnen</Link>
+                  <Link
+                    href="/kategorien/haus"
+                    className="border-b border-white"
+                  >
+                    Haus
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -173,13 +183,13 @@ export const Navigation: React.FC<NavigationProps> = () => {
               </Link>
             </li>
             <li>
-              <Link href="#" className="border-b border-white">
-                Letzter Beitrag
+              <Link href="/kategorien/wohnen" className="border-b border-white">
+                Wohnen
               </Link>
             </li>
             <li>
-              <Link href="/kategorien/wohnen" className="border-b border-white">
-                Wohnen
+              <Link href="/kategorien/haus" className="border-b border-white">
+                Haus
               </Link>
             </li>
           </ul>
