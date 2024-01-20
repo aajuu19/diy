@@ -15,7 +15,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   className,
 }) => {
   return (
-    <section id="faq-section" className={className}>
+    <section id="faq" className={className}>
       <Headline as={headline.as} variant={headline.variant} className="mb-4">
         {headline.content}
       </Headline>

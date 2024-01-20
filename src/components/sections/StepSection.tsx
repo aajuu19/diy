@@ -18,7 +18,7 @@ export const StepSection: React.FC<StepSectionProps> = ({
   className,
 }) => {
   return (
-    <div className={className}>
+    <div className={className} id="schritt-fuer-schritt-anleitung">
       <Headline as={headline.as} variant={headline.variant} className="mb-6">
         {headline.content}
       </Headline>

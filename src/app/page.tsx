@@ -66,9 +66,9 @@ export default function Home() {
                   oder um die Schaffung neuer Deko-Elemente, bei EASY-DIY finden
                   Sie Inspiration und Know-how.
                 </p>
-                <button className="btn btn-primary">
+                <Link href="/kategorien" className="btn btn-primary">
                   Sehen Sie sich alle DIY-Kategorien an
-                </button>
+                </Link>
               </div>
             </div>
           </div>

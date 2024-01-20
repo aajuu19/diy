@@ -14,10 +14,12 @@ import { YoutubeSection } from "@/components/sections";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { useGetCommentsQuery } from "@/data/useGetComments";
 import { CommentForm } from "@/components/sections/CommentSection";
+import { useState } from "react";
 
 export default function Page({
   params,
 }: Readonly<{ params: { slug: string; blogSlug: string } }>) {
+  const [currentAnchor, setCurrentAnchor] = useState("");
   const { data } = useBlogArticleQuery({ blogArticleSlug: params.blogSlug });
   const { data: rawSimilarBlogData } = useSimilarBlogArticlesQuery({
     blogArticleSlug: params.blogSlug,
@@ -86,25 +88,32 @@ export default function Page({
               <Text content={articleData?.introductionText} />
 
               {materialListData && (
-                <div className="border-b border-border pb-4 mb-4 mt-10">
+                <div
+                  className="border-b border-border pb-4 mb-4 mt-10"
+                  id="materialien-werkzeuge"
+                >
                   <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4 block mb-4 rounded-lg">
                     {materialListData?.title}
                   </span>
 
                   {materialListData?.linkList && (
                     <ul className="tool-list">
-                      {materialListData?.linkList?.map(({ label, url }) => (
-                        <li key={url + label}>
-                          <Link
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Der Artikel wird in einem neuen Tab geöffnet"
-                          >
-                            {label}
-                          </Link>
-                        </li>
-                      ))}
+                      {materialListData?.linkList?.map(({ label, url }) => {
+                        return url ? (
+                          <li key={url + label}>
+                            <Link
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Der Artikel wird in einem neuen Tab geöffnet"
+                            >
+                              {label}
+                            </Link>
+                          </li>
+                        ) : (
+                          <li key={url + label}>{label}</li>
+                        );
+                      })}
                     </ul>
                   )}
                 </div>
@@ -120,7 +129,10 @@ export default function Page({
               )}
 
               {articleData?.tips && !!articleData?.tips?.length && (
-                <div className="border-b border-border pb-4 mb-10">
+                <div
+                  className="border-b border-border pb-4 mb-10"
+                  id="tipps-tricks"
+                >
                   <Headline
                     variant="h4"
                     as="span"
@@ -129,8 +141,8 @@ export default function Page({
                     Tipps & Tricks:
                   </Headline>
                   <ul className="tip-list">
-                    {articleData?.tips?.map(({ label }, index) => (
-                      <li key={index}>{label}</li>
+                    {articleData?.tips?.map(({ label }) => (
+                      <li key={label}>{label}</li>
                     ))}
                   </ul>
                 </div>
@@ -174,7 +186,7 @@ export default function Page({
                         </div>
                         <div>
                           <div className="flex items-center gap-4">
-                            <Headline as="span" variant="h5" className="mb-0">
+                            <Headline as="span" variant="h5" className="!mb-0">
                               {author}
                             </Headline>
                             <span className="w-2 h-2 bg-secondary rounded-full" />
@@ -193,8 +205,36 @@ export default function Page({
                 </span>
               )}
             </article>
-            <aside className="col-span-12 md:col-span-4">
-              <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4  block mb-4 rounded-lg">
+            <aside className="col-span-12 md:col-span-4 sticky top-20 self-start">
+              <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4 block mb-4 rounded-lg">
+                Inhaltsverzeichnis
+              </span>
+              <ul className="general-list">
+                <li>
+                  <Link href="#materialien-werkzeuge">
+                    Materialien und Werkzeuge
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#schritt-fuer-schritt-anleitung">
+                    Schritt-für-Schritt-Anleitung
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#tipps-tricks">Tipps & Tricks</Link>
+                </li>
+                <li>
+                  <Link href="#video-anleitung">Videoanleitung</Link>
+                </li>
+                <li>
+                  <Link href="#faq">FAQ - Häufig gestellte Fragen</Link>
+                </li>
+                <li>
+                  <Link href="#kommentare">Kommentare</Link>
+                </li>
+              </ul>
+
+              <span className="font-bold text-xl bg-secondary text-primary-content py-2 px-4 block mb-4 rounded-lg mt-10">
                 Ähnliche Artikel
               </span>
               <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical md:-translate-x-1/2">

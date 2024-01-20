@@ -15,7 +15,7 @@ export const YoutubeSection: React.FC<YoutubeSectionProps> = ({
   className,
 }) => {
   return (
-    <section id="video-section" className={className}>
+    <section id="video-anleitung" className={className}>
       <Headline as={headline.as} variant={headline.variant} className="mb-4">
         {headline.content}
       </Headline>

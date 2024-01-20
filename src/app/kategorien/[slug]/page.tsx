@@ -48,7 +48,7 @@ export default function Page({
           />
         </div>
         <div className="flex justify-between col-span-12 border-b border-border items-center">
-          <div className="*:text-sm breadcrumbs">
+          <div className="*:text-sm breadcrumbs mt-6">
             <ul>
               <li>
                 <Link href="/kategorien">Kategorien</Link>

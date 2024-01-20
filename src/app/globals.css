@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply scroll-pt-20;
+}
+
 .image-full {
   @apply rounded-none;
 }
@@ -28,24 +32,35 @@ ul.nav-links li a:hover {
 }
 
 ul.tool-list,
-ul.tip-list {
+ul.tip-list,
+ul.general-list {
   @apply leading-10;
   @apply list-inside;
 }
 
 ul.tool-list li,
-ul.tip-list li {
+ul.tip-list li,
+ul.general-list li {
   display: flex;
 }
 
 ul.tool-list li:before,
-ul.tip-list li:before {
+ul.tip-list li:before,
+ul.general-list li:before {
   position: relative;
   top: 0.125rem;
   display: block;
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;
+}
+
+ul.general-list li a:hover {
+  @apply text-primary;
+}
+
+ul.general-list li:before {
+  content: url("/chevron-right.svg");
 }
 
 ul.tool-list li:before {

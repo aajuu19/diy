@@ -28,7 +28,7 @@ export async function submitComment(
 
     return {
       message:
-        "Vielen Dank für dein Kommentar. Nach einer Prüfung durch unsere Redaktion wird dieser freigeschaltet.",
+        "Vielen Dank für deinen Kommentar. Nach einer Prüfung durch unsere Redaktion wird dieser freigeschaltet.",
       isSuccess: true,
       isError: false,
     };

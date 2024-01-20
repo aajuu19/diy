@@ -41,7 +41,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({ blogId }) => {
   const [state, formAction] = useFormState(submitComment, initialState);
 
   return (
-    <div className="border-t border-border mt-14 pt-14">
+    <div className="border-t border-border mt-14 pt-14" id="kommentare">
       <Headline variant="h4" as="h4">
         Eure Kommentare
       </Headline>
