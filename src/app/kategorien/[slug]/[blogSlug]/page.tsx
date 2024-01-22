@@ -67,7 +67,10 @@ export default function Page({
         )}
 
         {articleData?.introductionText && (
-          <div className="pt-6 grid grid-cols-12 md:gap-x-12 gap-y-6">
+          <div
+            id="einleitung"
+            className="pt-6 grid grid-cols-12 md:gap-x-12 gap-y-6"
+          >
             <div className="md:flex pb-4 md:pb-0 justify-between col-span-12 border-b border-border items-center">
               <div className="*:text-sm breadcrumbs">
                 <ul className="flex-wrap whitespace-break-spaces md:flex-nowrap md:whitespace-normal">
@@ -86,6 +89,15 @@ export default function Page({
             </div>
             <article className="col-span-12 md:col-span-8">
               <Text content={articleData?.introductionText} />
+
+              {articleData?.youtubeSection && (
+                <YoutubeSection
+                  embedId={articleData?.youtubeSection?.embedId}
+                  headline={articleData?.youtubeSection?.headline}
+                  source={articleData?.youtubeSection?.source}
+                  className="my-10 border-b border-border pb-4 pt-10 border-t"
+                />
+              )}
 
               {materialListData && (
                 <div
@@ -148,15 +160,6 @@ export default function Page({
                 </div>
               )}
 
-              {articleData?.youtubeSection && (
-                <YoutubeSection
-                  embedId={articleData?.youtubeSection?.embedId}
-                  headline={articleData?.youtubeSection?.headline}
-                  source={articleData?.youtubeSection?.source}
-                  className="mb-10 border-b border-border pb-4"
-                />
-              )}
-
               {articleData?.faqSection && (
                 <FaqSection
                   faqItems={articleData?.faqSection?.faqItems}
@@ -211,6 +214,12 @@ export default function Page({
               </span>
               <ul className="general-list">
                 <li>
+                  <Link href="#einleitung">Einleitung</Link>
+                </li>
+                <li>
+                  <Link href="#video-anleitung">Videoanleitung</Link>
+                </li>
+                <li>
                   <Link href="#materialien-werkzeuge">
                     Materialien und Werkzeuge
                   </Link>
@@ -223,9 +232,7 @@ export default function Page({
                 <li>
                   <Link href="#tipps-tricks">Tipps & Tricks</Link>
                 </li>
-                <li>
-                  <Link href="#video-anleitung">Videoanleitung</Link>
-                </li>
+
                 <li>
                   <Link href="#faq">FAQ - Häufig gestellte Fragen</Link>
                 </li>
